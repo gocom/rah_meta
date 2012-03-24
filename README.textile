@@ -1,0 +1,49 @@
+h1. rah_meta
+
+p. Rah_meta is the new "rah_metas":https://github.com/gocom/rah_metas in the works. Old, phasing-out rah_metas will be replaced by a new objective, content pusher guy. And content pushing isn't just for metas, but any page template snippet.
+
+h2. Working presentation of the concept
+
+bc.. <head>
+
+	<!--
+		Binding point for the content
+		(can be used anywhere on the template).
+	-->
+
+	<txp:rah_meta name="description" />
+	<txp:rah_meta name="keywords" />
+	<txp:rah_meta name="styles" />
+</head>
+<body>
+[...]
+
+<!--
+	Regular article listing somewhere
+	on the page
+-->
+
+<txp:article_custom>
+	
+	<h2><txp:title /></h2>
+	<txp:body />
+	
+	<!--
+		Tags that push new content to the tags
+		acting as binding point
+	-->
+	
+	<txp:rah_meta name="description" value='<txp:custom_field name="description" />' />
+	<txp:rah_meta name="description" value='<txp:excerpt />' />
+	<txp:rah_meta name="description" value='<txp:body />' />
+
+	<txp:rah_meta name="keywords" value='<txp:keywords />' />
+	<txp:rah_meta name="keywords" value="ExtraWord1, ExtraWord2" />
+
+	<txp:rah_meta name="styles">
+		#article {
+			background: #eee;
+		}
+	</txp:rah_meta>
+
+</txp:article_custom>
