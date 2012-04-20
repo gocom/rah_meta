@@ -24,15 +24,19 @@
 		extract(lAtts(array(
 			'return' => NULL,
 			'name' => NULL,
-			'value' => parse($thing),
+			'value' => NULL,
 		), $atts, 0));
 		
 		if($name === NULL) {
-			trigger_error('Name is required.');
+			trigger_error(gTxt('invalid_attribute_value', array('{name}' => 'name')));
 			return;
 		}
 		
-		if(!isset($atts['value']) && $thing === NULL) {
+		if($thing !== NULL) {
+			$value = parse($thing);
+		}
+		
+		if($value === NULL) {
 			return rah_meta::factory()->housing($name, $atts);
 		}
 		
