@@ -41,6 +41,7 @@
 		}
 		
 		rah_meta::factory()->set($name, $value);
+		
 		return;
 	}
 
@@ -172,7 +173,7 @@ class rah_meta {
 	
 	private function form_metatag() {
 		return 
-			'<meta name="'.htmlspecialchars($this->r['name']).'" value="'.$this->r['value'].'" />';
+			'<meta name="'.htmlspecialchars($this->r['name']).'" value="'.htmlspecialchars($this->r['value']).'" />';
 	}
 	
 	/**
